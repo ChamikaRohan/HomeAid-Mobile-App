@@ -1,10 +1,34 @@
+import React from "react";
 import { View, Text, Image, StyleSheet,TouchableOpacity  } from 'react-native'
-import React from 'react'
+import * as WebBrowser from "expo-web-browser";
+import { useOAuth } from "@clerk/clerk-expo";
+import { useWarmUpBrowser } from "../../hooks/useWarmUpBrowser";
 import Colors from '../../Utils/Colors'
 
+WebBrowser.maybeCompleteAuthSession();
+
 export default function Login() {
+  useWarmUpBrowser();
+  const { startOAuthFlow } = useOAuth({ strategy: "oauth_google" });
+  const onPress = React.useCallback(async () => {
+    console.log("Called")
+    try {
+      const { createdSessionId, signIn, signUp, setActive } =
+        await startOAuthFlow();
+
+      if (createdSessionId) {
+        setActive({ session: createdSessionId });
+      } else {
+        // Use signIn or signUp for next steps such as MFA
+      }
+    } catch (err) {
+      console.error("OAuth error", err);
+    }
+  }, []);
+
   return (
     <View style={styles.container}>
+      <Image style={styles.loginImage} source={require('../../../assets/images/LoginImg.png')}></Image>
       <View style={styles.subContainer} >
         <Text style={styles.text_main}>
           Let's find 
@@ -12,7 +36,7 @@ export default function Login() {
             </Text> services
         </Text>  
         <Text style={styles.text_sub_small}>Best app to find services near you which deliver you a professional service</Text>
-        <TouchableOpacity style={styles.button} onPress={()=>{console.log("Hello world!")}}>
+        <TouchableOpacity style={styles.button} onPress={onPress}>
           <Text style={{textAlign: 'center', fontSize: 17, color: Colors.PRIMARY }}>Let's Get Strated</Text>
         </TouchableOpacity>
       </View>
@@ -26,19 +50,17 @@ const styles = StyleSheet.create({
       alignItems: "center"
     },
     loginImage:{
-        width: 100,
-        height: 100,
-        marginTop: 70,
-        borderWidth: 4,
         borderColor: Colors.BLACK,
-        borderRadius: 20
+        width:210, 
+        height: 460,
+        marginTop: -10
     },
     subContainer: {
       width: '106%',
       backgroundColor: Colors.PRIMARY,
       height: '70%',
       marginRight: 20,
-      marginTop: 460,
+      marginTop: 35,
       borderRadius: 40
     },
     text_main: {
