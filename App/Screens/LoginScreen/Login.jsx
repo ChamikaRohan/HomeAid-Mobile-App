@@ -53,13 +53,12 @@ const styles = StyleSheet.create({
         borderColor: Colors.BLACK,
         width:210, 
         height: 460,
-        marginTop: -10
+        marginTop: 60
     },
     subContainer: {
-      width: '106%',
+      width: '100%',
       backgroundColor: Colors.PRIMARY,
       height: '70%',
-      marginRight: 20,
       marginTop: 35,
       borderRadius: 40
     },
