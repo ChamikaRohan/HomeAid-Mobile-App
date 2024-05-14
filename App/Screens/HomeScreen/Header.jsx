@@ -4,6 +4,7 @@ import { useUser } from '@clerk/clerk-expo'
 import NotificationBarSet from '../NotificationBar/NotificationBarSet'
 import Colors from '../../Utils/Colors'
 import { Entypo } from '@expo/vector-icons';
+import { Feather } from '@expo/vector-icons';
 
 export default function Header() {
 const {user, isLoading} = useUser();
@@ -26,9 +27,10 @@ const {user, isLoading} = useUser();
         <Entypo name="bookmarks" size={30} color={Colors.WHITE} />
     </View>
     
-    {/* Profile section */}
-    <View>
-    <TextInput>Search</TextInput>
+    {/* Search bar section */}
+    <View style={styles.searchBarContainer}>
+    <TextInput style={styles.textInput} placeholder='Search' />
+    <Feather style={styles.searchButton} name="search" size={24} color={Colors.PRIMARY} />
     </View>  
 
     </View>
@@ -60,5 +62,23 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: "space-between"
+    },
+    textInput:{
+        padding: 7,
+        paddingHorizontal: 16,
+        backgroundColor: Colors.WHITE,
+        borderRadius: 8,
+        width: '85%',
+        fontSize: 16
+    },
+    searchBarContainer: {
+        marginTop: 20,
+        flexDirection: 'row',
+        gap: 8 
+    },
+    searchButton: {
+        backgroundColor: Colors.WHITE,
+        padding: 10,
+        borderRadius: 8
     }
 })
