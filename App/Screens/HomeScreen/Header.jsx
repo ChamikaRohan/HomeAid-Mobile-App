@@ -20,8 +20,8 @@ const {user, isLoading} = useUser();
                 <Image source={{uri:user?.imageUrl}} style={styles.userImage}/>
             </View>
             <View>
-                <Text style={{color:Colors.WHITE}}>Welcome,</Text>
-                <Text style={{color:Colors.WHITE, fontSize:20}}>{user?.fullName}</Text>
+                <Text style={{color:Colors.WHITE, fontFamily: 'Poppins-Light'}}>Welcome,</Text>
+                <Text style={{color:Colors.WHITE, fontSize:20, fontFamily: 'Poppins-Medium'}}>{user?.fullName}</Text>
             </View>
         </View>
         <Entypo name="bookmarks" size={30} color={Colors.WHITE} />
