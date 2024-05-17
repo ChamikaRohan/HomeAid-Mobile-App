@@ -11,7 +11,7 @@ export default function Slider() {
   const getSliders=()=>{
     setSlider(GlobalAPI.getSlider().sliders)
   }
-
+  print(slider)
   return (
     <View>
       <Heading text={'Offers For You'}/>
