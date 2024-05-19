@@ -23,7 +23,7 @@ export default function Categories() {
       data={category}
       numColumns={4}
       renderItem={({ item, index }) => (
-        <TouchableOpacity onPress={()=>{navigations.push('business-list')}} style={styles.container}>
+        <TouchableOpacity onPress={()=>{navigations.push('business-list', {category: item.name})}} style={styles.container}>
             <View style={styles.iconContainer}>
                 <Image source={{uri:item.icon?.url}} style={{width:30, height: 30}}/>
             </View>
