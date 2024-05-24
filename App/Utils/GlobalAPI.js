@@ -365,7 +365,7 @@ const getBusinessListByCategory = (category) => {
         }
       ]
     }
-
+    
     if (category == "Cleaning") {return Cleaning;}
     else if (category == "Repairing") {return Repairing;}
     else if (category == "Painting") {return Painting;}

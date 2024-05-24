@@ -37,9 +37,8 @@ export default function App() {
     'Poppins-ExtraLight': require('./assets/fonts/Poppins-ExtraLight.ttf'),
   });
   
-
   return (
-    <ClerkProvider tokenCache={tokenCache} publishableKey='pk_test_a2V5LWxhbWItNzcuY2xlcmsuYWNjb3VudHMuZGV2JA'>
+    <ClerkProvider tokenCache={tokenCache} publishableKey="pk_test_a2V5LWxhbWItNzcuY2xlcmsuYWNjb3VudHMuZGV2JA">
     <View style={styles.container}>
       {/* Sign In component */}
       <SignedIn>
